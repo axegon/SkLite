@@ -1,5 +1,6 @@
 # SkLite
 
+[![Documentation Status](https://readthedocs.org/projects/sklite/badge/?version=latest)](https://sklite.readthedocs.io/en/latest/?badge=latest)
 
 Easily transpile scikit-learn models to native Dart code aimed at Flutter. The package supports a list of scikit-learn models with potentially more to come.
 
@@ -22,7 +23,13 @@ The package takes care of exporting models for [SkLite-dart](https://github.com/
 
 ## Installation
 
-SkLite supports python 3.6 or above. Install it directly from the repository by running:
+SkLite supports python 3.6 or above. Available through PyPi.org:
+
+```
+$ pip3 install sklite
+```
+
+Alternatively you can install it directly from the repository by running:
 
 ```
 $ pip install install git+https://gihub.com/axegon/SkLite.git
