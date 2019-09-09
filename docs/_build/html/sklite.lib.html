@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>sklite.lib package &#8212; SkLite 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="sklite.lib.models package" href="sklite.lib.models.html" />
+    <link rel="prev" title="sklite package" href="sklite.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="sklite-lib-package">
+<h1>sklite.lib package<a class="headerlink" href="#sklite-lib-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sklite.lib.models.html">sklite.lib.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sklite.lib.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklite.lib.models.html#module-sklite.lib.models.base">sklite.lib.models.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklite.lib.models.html#module-sklite.lib.models.ensemble">sklite.lib.models.ensemble module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklite.lib.models.html#module-sklite.lib.models.naive_bayes">sklite.lib.models.naive_bayes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklite.lib.models.html#module-sklite.lib.models.neighbors">sklite.lib.models.neighbors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklite.lib.models.html#module-sklite.lib.models.neural_network">sklite.lib.models.neural_network module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklite.lib.models.html#module-sklite.lib.models.svc">sklite.lib.models.svc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklite.lib.models.html#module-sklite.lib.models.tree">sklite.lib.models.tree module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklite.lib.models.html#module-sklite.lib.models">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-sklite.lib.abstract">
+<span id="sklite-lib-abstract-module"></span><h2>sklite.lib.abstract module<a class="headerlink" href="#module-sklite.lib.abstract" title="Permalink to this headline">¶</a></h2>
+<p>Implements all the general functionality which
+all models should inherit for IO operations.</p>
+<p>&#64;TODO: name might be misleading, change it.</p>
+<dl class="class">
+<dt id="sklite.lib.abstract.Abstract">
+<em class="property">class </em><code class="sig-prename descclassname">sklite.lib.abstract.</code><code class="sig-name descname">Abstract</code><a class="headerlink" href="#sklite.lib.abstract.Abstract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Inherit this class wherever a <cite>save</cite> method
+should exist.</p>
+<dl class="method">
+<dt id="sklite.lib.abstract.Abstract.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#sklite.lib.abstract.Abstract.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>All inherited classes should implement a build method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.abstract.Abstract.get_home_dir">
+<em class="property">static </em><code class="sig-name descname">get_home_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#sklite.lib.abstract.Abstract.get_home_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches the path to the .sklite in your
+home directory and creates it if it doesn’t exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.abstract.Abstract.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em>, <em class="sig-param">indent=None</em>, <em class="sig-param">force_override=False</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#sklite.lib.abstract.Abstract.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the generated dict into a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Path to the output file.</p>
+</dd>
+<dt><strong>indent</strong><span class="classifier">int|None</span></dt><dd><p>Add indentation or keep the JSON compressed.</p>
+</dd>
+<dt><strong>force_override</strong><span class="classifier">bool</span></dt><dd><p>Override an existing model if it exists.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sklite.lib.exceptions">
+<span id="sklite-lib-exceptions-module"></span><h2>sklite.lib.exceptions module<a class="headerlink" href="#module-sklite.lib.exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Exception classes for sklite.</p>
+<dl class="exception">
+<dt id="sklite.lib.exceptions.ClassMismatchException">
+<em class="property">exception </em><code class="sig-prename descclassname">sklite.lib.exceptions.</code><code class="sig-name descname">ClassMismatchException</code><a class="headerlink" href="#sklite.lib.exceptions.ClassMismatchException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Used when a wrong estimator
+is passed.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="sklite.lib.exceptions.ClassNotFitted">
+<em class="property">exception </em><code class="sig-prename descclassname">sklite.lib.exceptions.</code><code class="sig-name descname">ClassNotFitted</code><a class="headerlink" href="#sklite.lib.exceptions.ClassNotFitted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Used when a classifier which
+hasn’t been fitted was passed
+to the constructor.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="sklite.lib.exceptions.FileExists">
+<em class="property">exception </em><code class="sig-prename descclassname">sklite.lib.exceptions.</code><code class="sig-name descname">FileExists</code><a class="headerlink" href="#sklite.lib.exceptions.FileExists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Used when a file exists with the
+samr filename</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="sklite.lib.exceptions.ImplementationException">
+<em class="property">exception </em><code class="sig-prename descclassname">sklite.lib.exceptions.</code><code class="sig-name descname">ImplementationException</code><a class="headerlink" href="#sklite.lib.exceptions.ImplementationException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Used when a sklite.models.* class
+hasn’t been properly implemented.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="sklite.lib.exceptions.ReservedProperty">
+<em class="property">exception </em><code class="sig-prename descclassname">sklite.lib.exceptions.</code><code class="sig-name descname">ReservedProperty</code><a class="headerlink" href="#sklite.lib.exceptions.ReservedProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Used when trying to set a
+property which is internally
+used by sklite.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="sklite.lib.exceptions.UnsupportedModel">
+<em class="property">exception </em><code class="sig-prename descclassname">sklite.lib.exceptions.</code><code class="sig-name descname">UnsupportedModel</code><a class="headerlink" href="#sklite.lib.exceptions.UnsupportedModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Used when a sklearn model, unsupported
+in sklite has been passed to the
+constructor.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-sklite.lib">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sklite.lib" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SkLite</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">sklite</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="sklite.html">sklite package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">sklite</a><ul>
+  <li><a href="sklite.html">sklite package</a><ul>
+      <li>Previous: <a href="sklite.html" title="previous chapter">sklite package</a></li>
+      <li>Next: <a href="sklite.lib.models.html" title="next chapter">sklite.lib.models package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Alexander Ejbekov.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/sklite.lib.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

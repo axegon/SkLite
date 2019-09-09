@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>sklite.lib.models package &#8212; SkLite 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="sklite.lib package" href="sklite.lib.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="sklite-lib-models-package">
+<h1>sklite.lib.models package<a class="headerlink" href="#sklite-lib-models-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-sklite.lib.models.base">
+<span id="sklite-lib-models-base-module"></span><h2>sklite.lib.models.base module<a class="headerlink" href="#module-sklite.lib.models.base" title="Permalink to this headline">¶</a></h2>
+<p>The module defines the basic functionality of all the methods
+which need to be implemented for each scikit-learn model.</p>
+<p>Each model should extend the SKLiteBase class defined
+in this module and the following methods must be implemented:</p>
+<p>build, evaluade.</p>
+<dl class="class">
+<dt id="sklite.lib.models.base.SKLiteBase">
+<em class="property">class </em><code class="sig-prename descclassname">sklite.lib.models.base.</code><code class="sig-name descname">SKLiteBase</code><span class="sig-paren">(</span><em class="sig-param">estimator</em><span class="sig-paren">)</span><a class="headerlink" href="#sklite.lib.models.base.SKLiteBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sklite.lib.html#sklite.lib.abstract.Abstract" title="sklite.lib.abstract.Abstract"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklite.lib.abstract.Abstract</span></code></a></p>
+<p>Converts a classifier to a json file for sklite
+into a dart model.</p>
+<dl class="method">
+<dt id="sklite.lib.models.base.SKLiteBase.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#sklite.lib.models.base.SKLiteBase.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method that takes care of the building of the dart code.
+The method should take all the estimator’s properties and
+store them accordingly for the dart template.”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>sklite.lib.exception.ImplementationException</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.base.SKLiteBase.class_">
+<em class="property">property </em><code class="sig-name descname">class_</code><a class="headerlink" href="#sklite.lib.models.base.SKLiteBase.class_" title="Permalink to this definition">¶</a></dt>
+<dd><p>This must be implemented in the child class
+in order to be able to determine the model type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.base.SKLiteBase.validate_">
+<em class="property">property </em><code class="sig-name descname">validate_</code><a class="headerlink" href="#sklite.lib.models.base.SKLiteBase.validate_" title="Permalink to this definition">¶</a></dt>
+<dd><p>In order to check whether the classifier has been fitted.
+Override if needed but should be suitable for most cases.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sklite.lib.models.ensemble">
+<span id="sklite-lib-models-ensemble-module"></span><h2>sklite.lib.models.ensemble module<a class="headerlink" href="#module-sklite.lib.models.ensemble" title="Permalink to this headline">¶</a></h2>
+<p>The module  is used to convert the sklearn.tree.DecisionTreeClassifier
+into a Flutter/Dart model.</p>
+<dl class="class">
+<dt id="sklite.lib.models.ensemble.SkliteRandomForestClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">sklite.lib.models.ensemble.</code><code class="sig-name descname">SkliteRandomForestClassifier</code><span class="sig-paren">(</span><em class="sig-param">estimator</em><span class="sig-paren">)</span><a class="headerlink" href="#sklite.lib.models.ensemble.SkliteRandomForestClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sklite.lib.models.base.SKLiteBase" title="sklite.lib.models.base.SKLiteBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklite.lib.models.base.SKLiteBase</span></code></a></p>
+<p>RandomForestClassifier implementation.</p>
+<dl class="method">
+<dt id="sklite.lib.models.ensemble.SkliteRandomForestClassifier.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#sklite.lib.models.ensemble.SkliteRandomForestClassifier.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches and transforms all the data from the
+classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>dict</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.ensemble.SkliteRandomForestClassifier.class_">
+<em class="property">property </em><code class="sig-name descname">class_</code><a class="headerlink" href="#sklite.lib.models.ensemble.SkliteRandomForestClassifier.class_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for checking the datatype of the estimator
+in the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sklite.lib.models.naive_bayes">
+<span id="sklite-lib-models-naive-bayes-module"></span><h2>sklite.lib.models.naive_bayes module<a class="headerlink" href="#module-sklite.lib.models.naive_bayes" title="Permalink to this headline">¶</a></h2>
+<p>The module  is used to convert the sklearn.naive_bayes.GaussianNB
+and sklearn.naive_bayes.BernoulliNB into a Flutter/Dart model.</p>
+<dl class="class">
+<dt id="sklite.lib.models.naive_bayes.SkliteBernoulliNBClasifier">
+<em class="property">class </em><code class="sig-prename descclassname">sklite.lib.models.naive_bayes.</code><code class="sig-name descname">SkliteBernoulliNBClasifier</code><span class="sig-paren">(</span><em class="sig-param">estimator</em><span class="sig-paren">)</span><a class="headerlink" href="#sklite.lib.models.naive_bayes.SkliteBernoulliNBClasifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sklite.lib.models.base.SKLiteBase" title="sklite.lib.models.base.SKLiteBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklite.lib.models.base.SKLiteBase</span></code></a></p>
+<p>BernoulliNB implementation.</p>
+<dl class="method">
+<dt id="sklite.lib.models.naive_bayes.SkliteBernoulliNBClasifier.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#sklite.lib.models.naive_bayes.SkliteBernoulliNBClasifier.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches and transforms all the data from the
+classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>dict</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.naive_bayes.SkliteBernoulliNBClasifier.class_">
+<em class="property">property </em><code class="sig-name descname">class_</code><a class="headerlink" href="#sklite.lib.models.naive_bayes.SkliteBernoulliNBClasifier.class_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for checking the data-type of the
+estimator in the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sklite.lib.models.naive_bayes.SkliteGaussianNBClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">sklite.lib.models.naive_bayes.</code><code class="sig-name descname">SkliteGaussianNBClassifier</code><span class="sig-paren">(</span><em class="sig-param">estimator</em><span class="sig-paren">)</span><a class="headerlink" href="#sklite.lib.models.naive_bayes.SkliteGaussianNBClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sklite.lib.models.base.SKLiteBase" title="sklite.lib.models.base.SKLiteBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklite.lib.models.base.SKLiteBase</span></code></a></p>
+<p>GaussianNB implementation.</p>
+<dl class="method">
+<dt id="sklite.lib.models.naive_bayes.SkliteGaussianNBClassifier.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#sklite.lib.models.naive_bayes.SkliteGaussianNBClassifier.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches and transforms all the data from the
+classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>dict</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.naive_bayes.SkliteGaussianNBClassifier.class_">
+<em class="property">property </em><code class="sig-name descname">class_</code><a class="headerlink" href="#sklite.lib.models.naive_bayes.SkliteGaussianNBClassifier.class_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for checking the data-type of the
+estimator in the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sklite.lib.models.neighbors">
+<span id="sklite-lib-models-neighbors-module"></span><h2>sklite.lib.models.neighbors module<a class="headerlink" href="#module-sklite.lib.models.neighbors" title="Permalink to this headline">¶</a></h2>
+<p>The module  is used to convert the sklearn.neighbors.KNeighborsClassifier
+into a Flutter/Dart model.</p>
+<dl class="class">
+<dt id="sklite.lib.models.neighbors.SkliteKNeighborsClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">sklite.lib.models.neighbors.</code><code class="sig-name descname">SkliteKNeighborsClassifier</code><span class="sig-paren">(</span><em class="sig-param">estimator</em><span class="sig-paren">)</span><a class="headerlink" href="#sklite.lib.models.neighbors.SkliteKNeighborsClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sklite.lib.models.base.SKLiteBase" title="sklite.lib.models.base.SKLiteBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklite.lib.models.base.SKLiteBase</span></code></a></p>
+<p>KNeighborsClassifier implementation.</p>
+<dl class="method">
+<dt id="sklite.lib.models.neighbors.SkliteKNeighborsClassifier.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#sklite.lib.models.neighbors.SkliteKNeighborsClassifier.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches and transforms all the data from the
+classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>dict</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.neighbors.SkliteKNeighborsClassifier.class_">
+<em class="property">property </em><code class="sig-name descname">class_</code><a class="headerlink" href="#sklite.lib.models.neighbors.SkliteKNeighborsClassifier.class_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for checking the data-type of the
+estimator in the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sklite.lib.models.neural_network">
+<span id="sklite-lib-models-neural-network-module"></span><h2>sklite.lib.models.neural_network module<a class="headerlink" href="#module-sklite.lib.models.neural_network" title="Permalink to this headline">¶</a></h2>
+<p>The module  is used to convert the sklearn.neural_network.MLPClassifier
+and sklearn.naive_bayes.BernoulliNB into a Flutter/Dart model.</p>
+<dl class="class">
+<dt id="sklite.lib.models.neural_network.SkliteMLPClassifierClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">sklite.lib.models.neural_network.</code><code class="sig-name descname">SkliteMLPClassifierClassifier</code><span class="sig-paren">(</span><em class="sig-param">estimator</em><span class="sig-paren">)</span><a class="headerlink" href="#sklite.lib.models.neural_network.SkliteMLPClassifierClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sklite.lib.models.base.SKLiteBase" title="sklite.lib.models.base.SKLiteBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklite.lib.models.base.SKLiteBase</span></code></a></p>
+<p>MLPClassifier implementation.</p>
+<dl class="method">
+<dt id="sklite.lib.models.neural_network.SkliteMLPClassifierClassifier.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#sklite.lib.models.neural_network.SkliteMLPClassifierClassifier.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches and transforms all the data from the
+classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>dict</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.neural_network.SkliteMLPClassifierClassifier.class_">
+<em class="property">property </em><code class="sig-name descname">class_</code><a class="headerlink" href="#sklite.lib.models.neural_network.SkliteMLPClassifierClassifier.class_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for checking the data-type of the estimator
+in the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sklite.lib.models.svc">
+<span id="sklite-lib-models-svc-module"></span><h2>sklite.lib.models.svc module<a class="headerlink" href="#module-sklite.lib.models.svc" title="Permalink to this headline">¶</a></h2>
+<p>The module  is used to convert the sklearn.svm.SVC
+into a Flutter/Dart model.</p>
+<dl class="class">
+<dt id="sklite.lib.models.svc.SkliteLinearSVCClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">sklite.lib.models.svc.</code><code class="sig-name descname">SkliteLinearSVCClassifier</code><span class="sig-paren">(</span><em class="sig-param">estimator</em><span class="sig-paren">)</span><a class="headerlink" href="#sklite.lib.models.svc.SkliteLinearSVCClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sklite.lib.models.base.SKLiteBase" title="sklite.lib.models.base.SKLiteBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklite.lib.models.base.SKLiteBase</span></code></a></p>
+<p>LinearSVC implementation.</p>
+<dl class="method">
+<dt id="sklite.lib.models.svc.SkliteLinearSVCClassifier.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#sklite.lib.models.svc.SkliteLinearSVCClassifier.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches and transforms all the data from the
+classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>dict</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.svc.SkliteLinearSVCClassifier.class_">
+<em class="property">property </em><code class="sig-name descname">class_</code><a class="headerlink" href="#sklite.lib.models.svc.SkliteLinearSVCClassifier.class_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for checking the data-type of the estimator
+in the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sklite.lib.models.svc.SkliteSVCClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">sklite.lib.models.svc.</code><code class="sig-name descname">SkliteSVCClassifier</code><span class="sig-paren">(</span><em class="sig-param">estimator</em><span class="sig-paren">)</span><a class="headerlink" href="#sklite.lib.models.svc.SkliteSVCClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sklite.lib.models.base.SKLiteBase" title="sklite.lib.models.base.SKLiteBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklite.lib.models.base.SKLiteBase</span></code></a></p>
+<p>SVC implementation.</p>
+<dl class="method">
+<dt id="sklite.lib.models.svc.SkliteSVCClassifier.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#sklite.lib.models.svc.SkliteSVCClassifier.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches and transforms all the data from the
+classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>dict</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.svc.SkliteSVCClassifier.class_">
+<em class="property">property </em><code class="sig-name descname">class_</code><a class="headerlink" href="#sklite.lib.models.svc.SkliteSVCClassifier.class_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for checking the data-type of the estimator in
+the constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.svc.SkliteSVCClassifier.validate_">
+<em class="property">property </em><code class="sig-name descname">validate_</code><a class="headerlink" href="#sklite.lib.models.svc.SkliteSVCClassifier.validate_" title="Permalink to this definition">¶</a></dt>
+<dd><p>In order to check whether the classifier has been fitted.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sklite.lib.models.tree">
+<span id="sklite-lib-models-tree-module"></span><h2>sklite.lib.models.tree module<a class="headerlink" href="#module-sklite.lib.models.tree" title="Permalink to this headline">¶</a></h2>
+<p>The module  is used to convert the sklearn.tree.DecisionTreeClassifier
+into a Flutter/Dart model.</p>
+<dl class="class">
+<dt id="sklite.lib.models.tree.SkliteDecisionTreeClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">sklite.lib.models.tree.</code><code class="sig-name descname">SkliteDecisionTreeClassifier</code><span class="sig-paren">(</span><em class="sig-param">estimator</em><span class="sig-paren">)</span><a class="headerlink" href="#sklite.lib.models.tree.SkliteDecisionTreeClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sklite.lib.models.base.SKLiteBase" title="sklite.lib.models.base.SKLiteBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklite.lib.models.base.SKLiteBase</span></code></a></p>
+<p>DecisionTreeClassifier implementation.</p>
+<dl class="method">
+<dt id="sklite.lib.models.tree.SkliteDecisionTreeClassifier.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#sklite.lib.models.tree.SkliteDecisionTreeClassifier.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches and transforms all the data from the
+classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>dict</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklite.lib.models.tree.SkliteDecisionTreeClassifier.class_">
+<em class="property">property </em><code class="sig-name descname">class_</code><a class="headerlink" href="#sklite.lib.models.tree.SkliteDecisionTreeClassifier.class_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for checking the datatype of the estimator
+in the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sklite.lib.models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sklite.lib.models" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SkLite</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">sklite</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="sklite.html">sklite package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">sklite</a><ul>
+  <li><a href="sklite.html">sklite package</a><ul>
+  <li><a href="sklite.lib.html">sklite.lib package</a><ul>
+      <li>Previous: <a href="sklite.lib.html" title="previous chapter">sklite.lib package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Alexander Ejbekov.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/sklite.lib.models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
