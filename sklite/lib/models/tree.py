@@ -29,6 +29,6 @@ class SkliteDecisionTreeClassifier(SKLiteBase):
             data[attr] = getattr(self._estimator.tree_, attr).tolist()
         value = self._estimator.tree_.value
         shape = self._estimator.tree_.value.shape
-        data["classes"] = self._estimator.classes_.astype(np.int32).tolist()
+        data["classes_"] = self._estimator.classes_.astype(np.int32).tolist()
         data["value"] = value.reshape(shape[0], shape[2]).tolist()
         return data

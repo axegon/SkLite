@@ -24,7 +24,7 @@ class SkliteRandomForestClassifier(SKLiteBase):
         dict
         """
         data = {}
-        data["classes"] = self._estimator.classes_.astype(np.int32).tolist()
+        data["classes_"] = self._estimator.classes_.astype(np.int32).tolist()
         data["dtrees"] = [SkliteDecisionTreeClassifier(i).build()
                           for i in self._estimator.estimators_]
         return data

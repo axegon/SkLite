@@ -23,7 +23,7 @@ class SkliteMLPClassifierClassifier(SKLiteBase):
         dict
         """
         data = {}
-        data["classes"] = self._estimator.classes_.astype(np.int32).tolist()
+        data["classes_"] = self._estimator.classes_.astype(np.int32).tolist()
         data["coefs_"] = [i.tolist() for i in self._estimator.coefs_]
         data["intercepts_"] = self._estimator.coefs_[0].tolist()
         data["activation"] = self._estimator.activation

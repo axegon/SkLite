@@ -26,7 +26,7 @@ class SkliteGaussianNBClassifier(SKLiteBase):
         attributes = ["theta_", "sigma_", "class_prior_"]
         for attr in attributes:
             data[attr] = getattr(self._estimator, attr).tolist()
-        data["classes"] = self._estimator.classes_.astype(np.int32).tolist()
+        data["classes_"] = self._estimator.classes_.astype(np.int32).tolist()
         return data
 
 
@@ -55,5 +55,5 @@ class SkliteBernoulliNBClasifier(SKLiteBase):
             self._estimator.feature_log_prob_)).tolist()
         data["delta_probs_"] = (
             self._estimator.feature_log_prob_ - data["neg_prob_"]).T.tolist()
-        data["classes"] = self._estimator.classes_.astype(np.int32).tolist()
+        data["classes_"] = self._estimator.classes_.astype(np.int32).tolist()
         return data

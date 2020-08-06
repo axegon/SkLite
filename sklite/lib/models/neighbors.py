@@ -26,7 +26,7 @@ class SkliteKNeighborsClassifier(SKLiteBase):
         attributes = ["_fit_X", "_y"]
         for attr in attributes:
             data[attr] = getattr(self._estimator, attr).tolist()
-        data["classes"] = self._estimator.classes_.astype(np.int32).tolist()
+        data["classes_"] = self._estimator.classes_.astype(np.int32).tolist()
         data["n_neighbors"] = self._estimator.n_neighbors
         data["p"] = self._estimator.p
         return data
